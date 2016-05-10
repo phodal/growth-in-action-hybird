@@ -10,11 +10,5 @@ import {Page, NavController} from 'ionic-angular';
   templateUrl: 'build/pages/blog-detail/blog-detail.html',
 })
 export class BlogDetailPage {
-  static get parameters() {
-    return [[NavController]];
-  }
-
-  constructor(nav) {
-    this.nav = nav;
-  }
+  constructor(public nav: NavController) {}
 }
