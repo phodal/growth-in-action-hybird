@@ -6,14 +6,18 @@ import {BlogpostServices} from '../../services/BlogpostServices';
   providers: [BlogpostServices]
 })
 export class Page1 {
-  private blogpostServices;
+  private blogListService;
 
   constructor(blogpostServices:BlogpostServices) {
-    this.blogpostServices = blogpostServices;
-    this.init();
+    this.blogListService = blogpostServices;
+    this.initService();
   }
 
-  init(){
-    this.blogpostServices.getBlogpostLists();
+  private initService() {
+    this.blogListService.getBlogpostLists().subscribe(
+      data => {this.blogposts = data; console.log(data);},
+      err => console.log('Error: ' + JSON.stringify(err)),
+      () => console.log('Get Blogpost')
+    );;
   }
 }

@@ -5,12 +5,12 @@ import 'rxjs/add/operator/map';
 export class BlogpostServices {
   private http;
 
-    constructor(@Inject(Http) http:Http) {
-        this.http = http
-    }
+  constructor(@Inject(Http) http:Http) {
+    this.http = http
+  }
 
-    getBlogpostLists() {
-        var url = 'http://127.0.0.1:8000/api/blogpost/?format=json';
-        return this.http.get(url).map(res => res.json());
-    }
+  getBlogpostLists() {
+    var url = 'http://127.0.0.1:8000/api/blogpost/?format=json';
+    return this.http.get(url).map(res => res);
+  }
 }
