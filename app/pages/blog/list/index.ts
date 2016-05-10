@@ -7,7 +7,7 @@ import {BlogpostServices} from '../../../services/BlogpostServices';
 })
 export class BlogList {
   private blogListService;
-  blogposts = [{}];
+  public blogposts;
 
   constructor(blogpostServices:BlogpostServices) {
     this.blogListService = blogpostServices;

@@ -3,13 +3,13 @@
 </ion-navbar>
 
 <ion-content padding class="blog-list">
-  <ion-card collection-repeat="blogpost in blogposts">
-    <ion-card-header *ngIf="blogpost">
+  <ion-item *ngFor="#blogpost of blogposts">
+    <h1 *ngIf="blogpost">
       {{blogpost.title}}
-    </ion-card-header>
+    </h1>
 
-    <ion-card-content *ngIf="blogpost">
+    <p *ngIf="blogpost">
       {{blogpost.body}}
-    </ion-card-content>
-  </ion-card>
+    </p>
+  </ion-item>
 </ion-content>
