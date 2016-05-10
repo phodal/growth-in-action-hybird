@@ -1,11 +1,11 @@
 import {Page} from 'ionic-angular';
-import {BlogpostServices} from '../../services/BlogpostServices';
+import {BlogpostServices} from '../../../services/BlogpostServices';
 
 @Page({
-  templateUrl: 'build/pages/page1/page1.html',
+  templateUrl: 'build/pages/blog/list/index.html',
   providers: [BlogpostServices]
 })
-export class Page1 {
+export class BlogList {
   private blogListService;
   blogposts = [{}];
 

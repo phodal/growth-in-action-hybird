@@ -1,10 +1,10 @@
 import {Page} from 'ionic-angular';
-import {Page1} from '../page1/page1';
+import {BlogList} from '../blog/list/index';
 
 
 @Page({
   templateUrl: 'build/pages/tabs/tabs.html'
 })
 export class TabsPage {
-  tab1Root:any = Page1;
+  tab1Root:any = BlogList;
 }
