@@ -7,6 +7,7 @@ import {BlogpostServices} from '../../services/BlogpostServices';
 })
 export class Page1 {
   private blogListService;
+  blogposts = [{}];
 
   constructor(blogpostServices:BlogpostServices) {
     this.blogListService = blogpostServices;
@@ -15,7 +16,7 @@ export class Page1 {
 
   private initService() {
     this.blogListService.getBlogpostLists().subscribe(
-      data => {this.blogposts = data; console.log(data);},
+      data => {this.blogposts = JSON.parse(data._body);},
       err => console.log('Error: ' + JSON.stringify(err)),
       () => console.log('Get Blogpost')
     );;
