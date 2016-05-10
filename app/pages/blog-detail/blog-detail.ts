@@ -1,14 +1,15 @@
-import {Page, NavController} from 'ionic-angular';
+import {Page, NavController, NavParams} from 'ionic-angular';
 
-/*
-  Generated class for the BlogDetailPage page.
-
-  See http://ionicframework.com/docs/v2/components/#navigation for more info on
-  Ionic pages and navigation.
-*/
 @Page({
   templateUrl: 'build/pages/blog-detail/blog-detail.html',
 })
 export class BlogDetailPage {
-  constructor(public nav: NavController) {}
+  private navParams;
+
+  constructor(public nav: NavController, navParams: NavParams) {
+    this.nav = nav;
+    this.navParams = navParams;
+
+    console.log(this.navParams.get('id'));
+  }
 }
