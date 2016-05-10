@@ -8,16 +8,16 @@ import {TabsPage} from './pages/tabs/tabs';
   config: {} // http://ionicframework.com/docs/v2/api/config/Config/
 })
 export class MyApp {
-  static get parameters() {
-    return [[Platform]];
+  rootPage:any = TabsPage;
+
+  constructor(platform:Platform) {
+    this.rootPage = TabsPage;
+    this.initializeApp(platform)
   }
 
-  constructor(platform) {
-    this.rootPage = TabsPage;
 
+  private initializeApp(platform:Platform) {
     platform.ready().then(() => {
-      // Okay, so the platform is ready and our plugins are available.
-      // Here you can do any higher level native things you might need.
       StatusBar.styleDefault();
     });
   }
