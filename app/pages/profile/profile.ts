@@ -3,7 +3,7 @@ import {Http, Headers} from "angular2/http";
 import 'rxjs/add/operator/map';
 import {FORM_DIRECTIVES} from "angular2/common";
 import {AuthService} from '../../services/auth';
-import {JwtHelper} from "../../helper/angular2-jwt";
+import {JwtHelper, AuthHttp} from "../../helper/angular2-jwt";
 
 @Page({
   templateUrl: 'build/pages/profile/profile.html',
@@ -19,10 +19,12 @@ export class ProfilePage {
   private jwtHelper = new JwtHelper();
   private user;
   private auth = new AuthService();
+  private authHttp;
 
-  constructor(http: Http, nav:NavController) {
+  constructor(http: Http, nav:NavController,  authHttp: AuthHttp) {
     this.nav = nav;
     this.http = http;
+    this.authHttp = authHttp;
     this.local.get('id_token').then(
       (data) => {
         this.user = this.jwtHelper.decodeToken(data).username;
@@ -59,5 +61,12 @@ export class ProfilePage {
   authSuccess(token) {
     this.local.set('id_token', token);
     this.user = this.jwtHelper.decodeToken(token).username;
+    
+    this.authHttp.request('http://localhost:8000/api/user/')
+      .map(res => res.text())
+      .subscribe(
+        data => console.log(data),
+        err => console.log(err)
+      );
   }
 }

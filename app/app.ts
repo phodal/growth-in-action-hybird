@@ -19,7 +19,8 @@ const ROUTES = [
   providers: [
     provide(AuthHttp, {
       useFactory: (http) => {
-        return new AuthHttp(new AuthConfig, http);
+        var authConfig = new AuthConfig({headerPrefix: 'Token'});
+        return new AuthHttp(authConfig, http);
       },
       deps: [Http]
     })
