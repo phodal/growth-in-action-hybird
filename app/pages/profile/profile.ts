@@ -1,5 +1,5 @@
 import {Page, NavController, LocalStorage} from 'ionic-angular';
-import {Http, Headers} from "angular2/http";
+import {Http, Headers, URLSearchParams} from "angular2/http";
 import 'rxjs/add/operator/map';
 import {FORM_DIRECTIVES} from "angular2/common";
 import {AuthService} from '../../services/auth';
@@ -20,8 +20,9 @@ export class ProfilePage {
   private user;
   private auth = new AuthService();
   private authHttp;
+  private user_info;
 
-  constructor(http: Http, nav:NavController,  authHttp: AuthHttp) {
+  constructor(http:Http, nav:NavController, authHttp:AuthHttp) {
     this.nav = nav;
     this.http = http;
     this.authHttp = authHttp;
@@ -30,6 +31,12 @@ export class ProfilePage {
         this.user = this.jwtHelper.decodeToken(data).username;
       }
     );
+    this.local.get('user_info').then(
+      (data) => {
+        this.user_info = JSON.parse(data);
+      }
+    );
+
   }
 
   login(credentials) {
@@ -61,11 +68,15 @@ export class ProfilePage {
   authSuccess(token) {
     this.local.set('id_token', token);
     this.user = this.jwtHelper.decodeToken(token).username;
-    
-    this.authHttp.request('http://localhost:8000/api/user/')
+    let params:URLSearchParams = new URLSearchParams();
+    params.set('username', this.user);
+
+    this.authHttp.request('http://localhost:8000/api/user/', {
+        search: params
+      })
       .map(res => res.text())
       .subscribe(
-        data => console.log(data),
+        data => this.local.set('user_info', JSON.stringify(JSON.parse(data)[0])),
         err => console.log(err)
       );
   }
