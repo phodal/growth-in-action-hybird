@@ -13,4 +13,9 @@ export class BlogpostServices {
     var url = 'http://127.0.0.1:8000/api/blogpost/?format=json';
     return this.http.get(url).map(res => res);
   }
+
+  getBlogpostDetail(id) {
+    var url = 'http://127.0.0.1:8000/api/blogpost/' + id + '?format=json';
+    return this.http.get(url).map(res => res);
+  }
 }

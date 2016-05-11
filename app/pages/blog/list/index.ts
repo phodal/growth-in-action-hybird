@@ -19,6 +19,6 @@ export class BlogList {
       data => {this.blogposts = JSON.parse(data._body);},
       err => console.log('Error: ' + JSON.stringify(err)),
       () => console.log('Get Blogpost')
-    );;
+    );
   }
 }

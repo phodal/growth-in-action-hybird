@@ -8,6 +8,7 @@
   <ion-title>博客详情</ion-title>
 </ion-navbar>
 
-<ion-content padding class="blog-detail">
-
+<ion-content padding class="blog-detail" *ngIf="blogpost">
+  <h1>{{blogpost.title}}</h1>
+  {{blogpost.body}}
 </ion-content>
