@@ -9,6 +9,7 @@ export class ProfilePage {
   private http;
   private LOGIN_URL = 'http://localhost:8000/api-token-auth/';
   private contentHeader;
+  private authType = 'login';
 
   constructor(http: Http, nav:NavController) {
     this.nav = nav;

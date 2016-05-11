@@ -3,19 +3,51 @@
 </ion-navbar>
 
 <ion-content padding class="profile">
-  <form #loginCreds="ngForm" (ngSubmit)="login(loginCreds.value)">
-    <ion-item>
-      <ion-label>Username</ion-label>
-      <ion-input type="text" ngControl="username"></ion-input>
-    </ion-item>
 
-    <ion-item>
-      <ion-label>Password</ion-label>
-      <ion-input type="password" ngControl="password"></ion-input>
-    </ion-item>
+  <div padding>
+    <ion-segment [(ngModel)]="authType">
+      <ion-segment-button value="login">
+        登录
+      </ion-segment-button>
+      <ion-segment-button value="signup">
+        注册
+      </ion-segment-button>
+    </ion-segment>
+  </div>
 
-    <div padding>
-      <button block type="submit">Login</button>
-    </div>
-  </form>
+  <div [ngSwitch]="authType">
+
+    <form *ngSwitchWhen="'login'" #loginCreds="ngForm" (ngSubmit)="login(loginCreds.value)">
+      <ion-item>
+        <ion-label>Username</ion-label>
+        <ion-input type="text" ngControl="username"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>Password</ion-label>
+        <ion-input type="password" ngControl="password"></ion-input>
+      </ion-item>
+
+      <div padding>
+        <button block type="submit">登录</button>
+      </div>
+    </form>
+
+    <form *ngSwitchWhen="'signup'" #signupCreds="ngForm" (ngSubmit)="signup(signupCreds.value)">
+      <ion-item>
+        <ion-label>Username</ion-label>
+        <ion-input type="text" ngControl="username"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>Password</ion-label>
+        <ion-input type="password" ngControl="password"></ion-input>
+      </ion-item>
+
+      <div padding>
+        <button block type="submit">注册</button>
+      </div>
+
+    </form>
+  </div>
 </ion-content>
