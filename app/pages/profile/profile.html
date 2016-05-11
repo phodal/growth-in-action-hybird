@@ -2,7 +2,7 @@
   <ion-title>Profile</ion-title>
 </ion-navbar>
 
-<ion-content padding class="profile" *ngIf="!user">
+<ion-content padding class="profile" *ngIf="!auth.authenticated()">
 
   <div padding>
     <ion-segment [(ngModel)]="authType">
@@ -53,7 +53,7 @@
 </ion-content>
 
 <ion-content>
-  <div *ngIf="user">
+  <div *ngIf="auth.authenticated()">
     <div padding>
       <h1>Welcome, {{ user }}</h1>
       <button block (click)="logout()">Logout</button>

@@ -1,8 +1,9 @@
 import {Page, NavController, LocalStorage} from 'ionic-angular';
 import {Http, Headers} from "angular2/http";
 import 'rxjs/add/operator/map';
-import {JwtHelper} from "../../helper/JWTHelper";
 import {FORM_DIRECTIVES} from "angular2/common";
+import {AuthService} from '../../services/auth';
+import {JwtHelper} from "../../helper/angular2-jwt";
 
 @Page({
   templateUrl: 'build/pages/profile/profile.html',
@@ -17,13 +18,13 @@ export class ProfilePage {
   private local = new LocalStorage();
   private jwtHelper = new JwtHelper();
   private user;
+  private auth = new AuthService();
 
   constructor(http: Http, nav:NavController) {
     this.nav = nav;
     this.http = http;
-    let token = this.local.get('id_token').then(
+    this.local.get('id_token').then(
       (data) => {
-        console.log(data);
         this.user = this.jwtHelper.decodeToken(data).username;
       }
     );
@@ -48,6 +49,13 @@ export class ProfilePage {
     //     err => this.error = err
     //   );
   }
+
+
+  logout() {
+    this.local.remove('id_token');
+    this.user = null;
+  }
+
   authSuccess(token) {
     this.local.set('id_token', token);
     this.user = this.jwtHelper.decodeToken(token).username;
