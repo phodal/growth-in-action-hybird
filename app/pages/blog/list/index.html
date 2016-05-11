@@ -2,8 +2,8 @@
   <ion-title>博客</ion-title>
 </ion-navbar>
 
-<ion-content padding class="blog-list">
-  <ion-item *ngFor="#blogpost of blogposts">
+<ion-content class="blog-list">
+  <ion-item *ngFor="#blogpost of blogposts" (click)="navigate(blogpost.id)">
     <h1 *ngIf="blogpost">
       {{blogpost.title}}
     </h1>

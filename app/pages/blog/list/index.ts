@@ -1,5 +1,6 @@
-import {Page} from 'ionic-angular';
+import {Page, NavController} from 'ionic-angular';
 import {BlogpostServices} from '../../../services/BlogpostServices';
+import {BlogDetailPage} from "../../blog-detail/blog-detail";
 
 @Page({
   templateUrl: 'build/pages/blog/list/index.html',
@@ -8,9 +9,11 @@ import {BlogpostServices} from '../../../services/BlogpostServices';
 export class BlogList {
   private blogListService;
   public blogposts;
+  private nav;
 
-  constructor(blogpostServices:BlogpostServices) {
+  constructor(nav: NavController, blogpostServices:BlogpostServices) {
     this.blogListService = blogpostServices;
+    this.nav = nav;
     this.initService();
   }
 
@@ -20,5 +23,11 @@ export class BlogList {
       err => console.log('Error: ' + JSON.stringify(err)),
       () => console.log('Get Blogpost')
     );
+  }
+
+  navigate(id){
+    this.nav.push(BlogDetailPage, {
+      id: id
+    });
   }
 }
