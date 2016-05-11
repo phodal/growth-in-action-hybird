@@ -28,6 +28,15 @@ export class ProfilePage {
       );
   }
 
+  signup(credentials) {
+    console.log("TODO");
+    // this.http.post(this.SIGNUP_URL, JSON.stringify(credentials), { headers: this.contentHeader })
+    //   .map(res => res.json())
+    //   .subscribe(
+    //     data => this.authSuccess(data.id_token),
+    //     err => this.error = err
+    //   );
+  }
   authSuccess(token) {
     this.local.set('id_token', token);
   }
