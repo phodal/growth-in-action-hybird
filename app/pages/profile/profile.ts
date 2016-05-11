@@ -10,11 +10,9 @@ import {Page, NavController} from 'ionic-angular';
   templateUrl: 'build/pages/profile/profile.html',
 })
 export class ProfilePage {
-  static get parameters() {
-    return [[NavController]];
-  }
+  private nav;
 
-  constructor(nav) {
+  constructor(nav: NavController) {
     this.nav = nav;
   }
 }

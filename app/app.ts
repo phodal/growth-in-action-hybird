@@ -3,9 +3,11 @@ import {StatusBar} from 'ionic-native';
 import {TabsPage} from './pages/tabs/tabs';
 import {BlogDetailPage} from "./pages/blog-detail/blog-detail";
 import {RouteConfig} from "angular2/router";
+import {ProfilePage} from "./pages/profile/profile";
 
 const ROUTES = [
-  {path: '/app/blog/:id', component: BlogDetailPage}
+  {path: '/app/blog/:id', component: BlogDetailPage},
+  {path: '/app/profile', component: ProfilePage}
 ];
 
 @App({
@@ -15,6 +17,7 @@ const ROUTES = [
 @RouteConfig(ROUTES)
 export class MyApp {
   rootPage:any = TabsPage;
+  routes = ROUTES;
 
   constructor(platform:Platform) {
     this.rootPage = TabsPage;
