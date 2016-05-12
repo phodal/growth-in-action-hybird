@@ -1,6 +1,7 @@
-import {Page, NavController} from 'ionic-angular';
+import {Page, NavController, Modal} from 'ionic-angular';
 import {BlogpostServices} from '../../../services/BlogpostServices';
 import {BlogDetailPage} from "../../blog-detail/blog-detail";
+import {CreateBlogModal} from "../create-modal/create";
 
 @Page({
   templateUrl: 'build/pages/blog/list/index.html',
@@ -26,7 +27,8 @@ export class BlogList {
   }
 
   createBlog() {
-    
+    let modal = Modal.create(CreateBlogModal);
+    this.nav.present(modal)
   }
 
   navigate(id){
