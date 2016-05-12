@@ -25,6 +25,10 @@ export class BlogList {
     );
   }
 
+  createBlog() {
+    
+  }
+
   navigate(id){
     this.nav.push(BlogDetailPage, {
       id: id
