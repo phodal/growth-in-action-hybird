@@ -56,6 +56,7 @@
   <div *ngIf="auth.authenticated()">
     <div padding>
       <h1>Welcome, {{ user }}</h1>
+      <h2 *ngIf="user_info">Last login {{user_info.last_login}}</h2>
       <button block (click)="logout()">Logout</button>
     </div>
   </div>
