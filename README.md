@@ -1,4 +1,4 @@
-全栈增长工程师实战 APP源码
+[全栈增长工程师实战](https://github.com/phodal/growth-in-action) APP源码
 ====
 
 Server端代码: [https://github.com/phodal/growth-in-action-python-code](https://github.com/phodal/growth-in-action-python-code)
