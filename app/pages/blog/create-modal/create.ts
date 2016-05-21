@@ -24,12 +24,12 @@ export class CreateBlogModal {
     this.authHttp.post('http://127.0.0.1:8000/api/blogpost/', JSON.stringify(value), {headers: this.contentHeader})
       .map(res => res.json())
       .subscribe(
-        data => this.authSuccess(data),
+        data => this.postSuccess(data),
         err => console.log(err)
       );
   }
 
-  authSuccess(data) {
+  postSuccess(data) {
     this.close()
   }
 }
