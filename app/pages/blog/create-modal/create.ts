@@ -30,7 +30,6 @@ export class CreateBlogModal {
   }
 
   authSuccess(data) {
-    console.log(data);
     this.close()
   }
 }
